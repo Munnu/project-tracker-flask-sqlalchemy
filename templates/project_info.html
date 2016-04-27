@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+    <title>Project Info: {{project_info[0]}}</title>
+</head>
+<body>
+<h1>{{ project_info[0] }}</h1>
+    
+
+    <p>Description: {{project_info[1]}}</p>
+    <p>Max grade: {{project_info[2]}}</p>
+
+    {% if projecty %}
+
+        <ul>
+            {% for student_project in projecty %}
+            <li>{{student_project[0]}}: {{student_project[1]}}</li>
+            {% endfor %}
+        </ul>
+
+    {% endif %}
+      
+</body>
+</html>

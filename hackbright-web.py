@@ -43,6 +43,25 @@ def student_add():
 
     return redirect(url_for('get_student', first=first, last=last, github=github))
 
+@app.route("/project")
+def get_project_info():
+    """Render a page showing information about a project"""
+
+    project_title = request.args.get('title', 'Markov')
+    project_info = hackbright.get_project_by_title(project_title)
+    projecty = hackbright.get_grades_by_title(project_title)
+
+    html = render_template("project_info.html", 
+                            project_info=project_info,
+                            projecty=projecty)
+    return html
+
+@app.route("/project-search")
+def get_project_form():
+    """ Show form for searching for a project. """
+
+    return render_template("project_search.html")
+
 
 if __name__ == "__main__":
     hackbright.connect_to_db(app)
